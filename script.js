@@ -12,7 +12,7 @@ function getComputerChoice() {
 document.getElementById("rockButton").addEventListener("click", playerSelectRock);
 document.getElementById("paperButton").addEventListener("click", playerSelectPaper);
 document.getElementById("scissorsButton").addEventListener("click", playerSelectScissors);
-
+document.getElementById("restart").addEventListener("click", restart);
 
 function playerSelectRock() {
   return playRound(0, getComputerChoice());
@@ -28,22 +28,38 @@ function playerSelectScissors() {
 
 function win() {
     if (playerScore == 5) {
-    document.getElementById("winLose").textContent = "Player Wins!!!";
-    document.getElementById("winLose2").textContent = "Press F5 to restart";
-    document.getElementById("buttons").textContent = "";
-    document.getElementById("removeL").textContent = "";
-    document.getElementById("removeL2").textContent = "";
+    document.getElementById("win").style.visibility = "visible";
+    document.getElementById("buttons").style.visibility = "hidden";
+    document.getElementById("removeL").style.visibility = "hidden";
+    document.getElementById("removeL2").style.visibility = "hidden";
+    document.getElementById("restart").style.visibility = "visible";
+    playerScore = 0;
+    computerScore = 0;
   }
 }
 
 function lose() {
   if (computerScore == 5) {
-  document.getElementById("winLose").textContent = "Player Loses!";
-  document.getElementById("winLose2").textContent = "Press F5 to restart";
-  document.getElementById("buttons").textContent = "";
-  document.getElementById("removeL").textContent = "";
-  document.getElementById("removeL2").textContent = "";
+  document.getElementById("lose").style.visibility = "visible";
+  document.getElementById("buttons").style.visibility = "hidden";
+  document.getElementById("removeL").style.visibility = "hidden";
+  document.getElementById("removeL2").style.visibility = "hidden";
+  document.getElementById("restart").style.visibility = "visible";
+  playerScore = 0;
+  computerScore = 0;
+  }
 }
+
+function restart() {
+  document.getElementById("restart").style.visibility = "hidden";
+  document.getElementById("lose").style.visibility = "hidden";
+  document.getElementById("win").style.visibility = "hidden";
+  document.getElementById("buttons").style.visibility = "visible";
+  document.getElementById("removeL").style.visibility = "visible";
+  document.getElementById("removeL2").style.visibility = "visible";
+  document.getElementById("scoreMarkerC").textContent = computerScore;
+  document.getElementById("scoreMarkerP").textContent = playerScore;
+
 }
 
 
